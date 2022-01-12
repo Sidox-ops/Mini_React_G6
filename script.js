@@ -65,6 +65,9 @@ function generatePage(){
     const currentPath = window.location.pathname;
     let elem;
     switch(currentPath){
+        case '/':
+            elem = Page1();
+            break;
         case '/page1':
             elem = Page1();
             break;
