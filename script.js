@@ -22,9 +22,9 @@ createElement(type, attributes = null, children){
     }
     
     return {
-    type: type,
-    attributes: attributes,
-    children: children,
+      type: type,
+      attributes: attributes,
+      children: children,
     };
 }
 };
@@ -37,8 +37,11 @@ class Hello extends MiniReact.Component {
         },
       },
     };
+
+    children = [];
+
     render() {
-      return MiniReact.createElement("div", null, ["Hello wordl"]);
+      return MiniReact.createElement("div", null, this.children);
     }
   }
 
@@ -51,9 +54,12 @@ class App extends MiniReact.Component {
         // this.state.currentUser = this.props.currentUser;
     }
     render() {
-        // return MiniReact.createElement("div", null, ["coucou"])
         return MiniReact.createElement(Hello, null, [
-        MiniReact.createElement("h1", null, ["Hello x2"])
+          MiniReact.createElement("h1", null, ["Bienvenue"]),
+          MiniReact.createElement(Hello, null, [
+            MiniReact.createElement("h2", null, ["Hello World"]),
+            MiniReact.createElement(Hello, null, ["Du texte"]),
+          ]),
         ])
     }
 }
