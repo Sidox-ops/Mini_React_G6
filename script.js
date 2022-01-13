@@ -15,8 +15,8 @@ Component: class Component {},
 
 createElement(type, attributes = null, children){
     if (typeof type === 'function') {
-    const reactElement = new (type)(attributes);
-    reactElement.children = children;
+      // Créer un composant en lui passant dans son constructeur ses attributs et children (Voir ligne 42)
+    const reactElement = new (type)(attributes, children);
 
     return renderReactElement(reactElement);
     }
@@ -38,10 +38,15 @@ class Hello extends MiniReact.Component {
       },
     };
 
-    children = [];
+  // Récupération de ses attributs et children (voir ligne 19)
+  constructor(attributes, children) {
+    super();
+    this.attributes = attributes;
+    this.children = children;
+  }
 
     render() {
-      return MiniReact.createElement("div", null, this.children);
+      return MiniReact.createElement("div", this.attributes, this.children);
     }
   }
 
@@ -54,7 +59,7 @@ class App extends MiniReact.Component {
         // this.state.currentUser = this.props.currentUser;
     }
     render() {
-        return MiniReact.createElement(Hello, null, [
+        return MiniReact.createElement(Hello, {id: "hello"}, [
           MiniReact.createElement("h1", null, ["Bienvenue"]),
           MiniReact.createElement(Hello, null, [
             MiniReact.createElement("h2", null, ["Hello World"]),
