@@ -1,4 +1,6 @@
-class App extends MiniReact.Component {
+import { MiniReact } from "../MiniReact.js"
+import { Hello } from "./Hello.js"
+export class App extends MiniReact.Component {
     render() {
       return MiniReact.createElement(Hello, { id: "hello" }, [
         MiniReact.createElement("h1", null, ["Bienvenue"]),

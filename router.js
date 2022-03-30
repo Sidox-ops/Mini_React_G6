@@ -1,8 +1,10 @@
+import { App } from "./components/App.js"
+
 String.prototype.interpolate = function (attributes) {
     return this;
 }
 
-function generatePage() {
+export function generatePage() {
     const currentPath = window.location.pathname;
     let elem;
     switch (currentPath) {
