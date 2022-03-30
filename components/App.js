@@ -1,5 +1,7 @@
 import { MiniReact } from "../MiniReact.js"
 import { Hello } from "./Hello.js"
+import { Header } from "./Header.js"
+
 export class App extends MiniReact.Component {
     render() {
       return MiniReact.createElement(Hello, { id: "hello" }, [

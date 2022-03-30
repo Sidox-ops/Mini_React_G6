@@ -1,4 +1,6 @@
-class Header extends MiniReact.Component {
+import { MiniReact } from "../MiniReact.js"
+
+export class Header extends MiniReact.Component {
   
     constructor(attributes, children) {
       super();
