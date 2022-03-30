@@ -1,4 +1,5 @@
 import { App } from "./components/App.js"
+import { Uploader } from "./components/Uploader.js";
 
 String.prototype.interpolate = function (attributes) {
     return this;
@@ -11,6 +12,10 @@ export function generatePage() {
       case "/":
         const app = new App();
         elem = app.render();
+        break;
+      case "/uploader":
+        const uploader = new Uploader();
+        elem = uploader.render();
         break;
     }
     if (root.firstChild) {
