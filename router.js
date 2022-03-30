@@ -1,4 +1,5 @@
 import { App } from "./components/App.js"
+import { Meteo } from "./components/Meteo.js"
 
 String.prototype.interpolate = function (attributes) {
     return this;
@@ -11,6 +12,10 @@ export function generatePage() {
       case "/":
         const app = new App();
         elem = app.render();
+        break;
+      case "/meteo":
+        const meteo = new Meteo();
+        elem = meteo.render();
         break;
     }
     if (root.firstChild) {
