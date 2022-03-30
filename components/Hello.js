@@ -1,4 +1,7 @@
-class Hello extends MiniReact.Component {
+import { MiniReact } from "../MiniReact.js"
+
+
+export class Hello extends MiniReact.Component {
     static propTypes = {
       properties: {
         toWhat: {
