@@ -6,7 +6,7 @@ function generatePage() {
     const currentPath = window.location.pathname;
     let elem;
     switch (currentPath) {
-      case "/home":
+      case "/":
         const app = new App();
         elem = app.render();
         break;
