@@ -1,6 +1,12 @@
 class App extends MiniReact.Component {
     render() {
       return MiniReact.createElement(Hello, { id: "hello" }, [
+        MiniReact.createElement(Header, { class: "header" }, [
+          MiniReact.createElement("button", null, ["bouton"]),
+          MiniReact.createElement("button", null, ["bouton"]),
+          MiniReact.createElement("button", null, ["bouton"]),
+          MiniReact.createElement("button", null, ["bouton"])
+        ]),
         MiniReact.createElement("h1", null, ["Bienvenue"]),
         MiniReact.createElement(Hello, null, [
           MiniReact.createElement("h2", null, ["Hello World"]),
