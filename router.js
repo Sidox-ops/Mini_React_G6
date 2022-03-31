@@ -5,7 +5,7 @@ String.prototype.interpolate = function (attributes) {
     return this;
 }
 
-export function generatePage() {
+export async function generatePage() {
     const currentPath = window.location.pathname;
     let elem;
     switch (currentPath) {
@@ -15,7 +15,7 @@ export function generatePage() {
         break;
       case "/meteo":
         const meteo = new Meteo();
-        elem = meteo.render();
+        elem = await meteo.render();
         break;
     }
     if (root.firstChild) {
@@ -56,6 +56,7 @@ export function generatePage() {
           node.appendChild(generateStructure(child));
         }
       }
+    console.log('node: ' + node)
     structure.node = node;
   
     return node;
