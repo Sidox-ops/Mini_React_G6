@@ -1,4 +1,6 @@
 import { App } from "./components/App.js"
+import { Uploader } from "./components/Uploader.js";
+import { Meteo } from "./components/Meteo.js";
 
 String.prototype.interpolate = function (attributes) {
     return this;
