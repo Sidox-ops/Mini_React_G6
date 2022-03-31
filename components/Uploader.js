@@ -1,4 +1,5 @@
 import { MiniReact } from "../MiniReact.js"
+import { getFunctionBody } from "../utils.js";
 
 export class Uploader extends MiniReact.Component {
 
@@ -18,7 +19,7 @@ export class Uploader extends MiniReact.Component {
 
   render() { 
     return MiniReact.createElement("div", null, [
-      MiniReact.createElement("input", { id: "uploader", type: "file", onchange: this.getFunctionBody(this.showFile) }, [])
+      MiniReact.createElement("input", { id: "uploader", type: "file", onchange: getFunctionBody(this.showFile) }, [])
     ])
   }
 }
