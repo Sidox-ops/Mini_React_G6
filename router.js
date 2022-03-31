@@ -1,11 +1,10 @@
 import { App } from "./components/App.js"
-import { Uploader } from "./components/Uploader.js";
 
 String.prototype.interpolate = function (attributes) {
     return this;
 }
 
-export function generatePage() {
+export async function generatePage() {
     const currentPath = window.location.pathname;
     let elem;
     switch (currentPath) {
@@ -16,6 +15,10 @@ export function generatePage() {
       case "/uploader":
         const uploader = new Uploader();
         elem = uploader.render();
+        break;
+      case "/meteo":
+        const meteo = new Meteo();
+        elem = await meteo.render();
         break;
     }
     if (root.firstChild) {
@@ -56,6 +59,7 @@ export function generatePage() {
           node.appendChild(generateStructure(child));
         }
       }
+    console.log('node: ' + node)
     structure.node = node;
   
     return node;
