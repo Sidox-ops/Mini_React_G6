@@ -25,7 +25,7 @@ h1 {
     letter-spacing: 2px;
 }
 
-a {
+/*a {
     position: absolute;
     top: 30px;
     left: 60px;
@@ -35,7 +35,7 @@ a {
     text-transform: uppercase;
     letter-spacing: 1px;
     display: none;
-}
+}*/
 
 .container {
     background: linear-gradient(left, #00BBFF, #00BBFF 14.3%, #2EB5E5 14.3%, #2EB5E5 28.6%, #E6E6E6 28.6%, #E6E6E6 42.9%, #F3D166 42.9%, #F3D166 57.2%, #222233 57.2%, #222233 71.5%, #444444 71.5%, #444444 85.8%, #85DB8C 85.8%);
@@ -46,4 +46,17 @@ a {
     left: 50%;
     top: 30%;
     margin: -65px -600px;
+}
+.menu{
+    display: block;
+    margin: auto;
+    width: fit-content;
+    padding: 30px;
+}
+.button{
+    background-color: white;
+    color: red;
+    padding: 5px 8px;
+    border-radius: 8px;
+    margin-left: 15px;
 }
