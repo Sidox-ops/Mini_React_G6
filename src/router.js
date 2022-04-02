@@ -1,18 +1,21 @@
-import { App } from "./components/App.js"
-import { Uploader } from "./components/Uploader.js";
-import { Meteo } from "./components/Meteo.js";
+import Home from "./components/Home.js";
+import Uploader from "./components/Uploader.js";
+import Meteo from "./components/Meteo.js";
+import NotFound404 from "./components/NotFound404.js";
+import Header from "./components/Header.js";
 
 String.prototype.interpolate = function (attributes) {
   return this;
-}
+};
 
 export async function generatePage() {
   const currentPath = window.location.pathname;
+  let header = new Header();
   let elem;
-  /*switch (currentPath) {
+  switch (currentPath) {
     case "/":
-      const app = new App();
-      elem = app.render();
+      const home = new Home();
+      elem = home.render();
       break;
     case "/uploader":
       const uploader = new Uploader();
@@ -22,19 +25,22 @@ export async function generatePage() {
       const meteo = new Meteo();
       elem = await meteo.render();
       break;
-  }*/
-  const app = new App();
-  elem = app.render();
+    default:
+      const notFound404 = new NotFound404();
+      elem = await notFound404.render();
+      break;
+  }
+  console.log("%crouter.js line:31 root.firstChild", "color: #007acc;", root);
   if (root.firstChild) {
     root.replaceChild(generateStructure(elem), root.firstChild);
   } else {
+    root.appendChild(generateStructure(header.render()));
     root.appendChild(generateStructure(elem));
   }
 }
 
-const generateStructure = (structure) => {
+export const generateStructure = (structure) => {
   const node = document.createElement(structure.type);
-  //console.log('%cscript_migration.js line:275 node', 'color: #007acc;', node);
   if (structure.attributes) {
     for (let attName in structure.attributes) {
       if (/on([A-Z].*)/.test(attName)) {
@@ -52,7 +58,11 @@ const generateStructure = (structure) => {
   }
   if (structure.children)
     for (let child of structure.children) {
-    //  console.log('%cscript_migration.js line:293 child', 'color: #007acc;', child);
+      // console.log(
+      //   "%cscript_migration.js line:293 child",
+      //   "color: #007acc;",
+      //   child
+      // );
       if (child === undefined) continue;
       if (typeof child === "string") {
         node.appendChild(
@@ -63,7 +73,7 @@ const generateStructure = (structure) => {
         node.appendChild(generateStructure(child));
       }
     }
-  //console.log('node: ' + node)
+  // console.log("node: " + node);
   structure.node = node;
 
   return node;
