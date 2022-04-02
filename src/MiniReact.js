@@ -1,7 +1,8 @@
 import { isClass } from "./utils.js";
+import Component from "./Component.js";
 
 export const MiniReact = {
-  Component: class Component {},
+  Component,
 
   createElement(type, attributes = null, children) {
     if (isClass(type)) {
