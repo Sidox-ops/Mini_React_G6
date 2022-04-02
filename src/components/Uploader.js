@@ -17,6 +17,7 @@ export default class Uploader extends MiniReact.Component {
   }
 
   render() {
+    document.title = "Upload tes fichiers ici";
     return MiniReact.createElement("div", null, [
       MiniReact.createElement(
         "input",

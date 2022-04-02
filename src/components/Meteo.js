@@ -28,6 +28,7 @@ export default class Meteo extends MiniReact.Component {
   }
 
   async render() {
+    document.title = "La météo de gulli";
     const meteoJson = await this.getMeteo();
     var date = new Date(meteoJson.dt * 1000);
     var minutes = date.getMinutes() == "0" ? " " : date.getMinutes();
@@ -39,7 +40,6 @@ export default class Meteo extends MiniReact.Component {
     }
 
     return MiniReact.createElement(Hello, { id: "hello" }, [
-      // MiniReact.createElement(Header),
       MiniReact.createElement("div", { class: "container" }, [
         MiniReact.createElement("h1", null, ["METEO"]),
         MiniReact.createElement("h2", null, [

@@ -30,7 +30,6 @@ export async function generatePage() {
       elem = await notFound404.render();
       break;
   }
-  console.log("%crouter.js line:31 root.firstChild", "color: #007acc;", root);
   if (root.firstChild) {
     root.replaceChild(generateStructure(elem), root.firstChild);
   } else {
