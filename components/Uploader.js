@@ -19,6 +19,7 @@ export class Uploader extends MiniReact.Component {
 
   render() { 
     return MiniReact.createElement("div", null, [
+      MiniReact.createElement("div", { class: "description" }, ["Description"]),
       MiniReact.createElement("input", { id: "uploader", type: "file", onchange: getFunctionBody(this.showFile) }, [])
     ])
   }

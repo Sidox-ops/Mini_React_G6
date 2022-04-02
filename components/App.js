@@ -6,11 +6,14 @@ import { Meteo } from "./Meteo.js";
 
 
 const header = new Header();
+var type;
+var attributes;
+var children;
 
 export async function Page() {
   const currentPath = window.location.pathname;
   let elem;
-  console.log("path", currentPath)
+  //console.log("path", currentPath)
   switch (currentPath) {
     case "/":
       const app = new Hello();
@@ -27,16 +30,21 @@ export async function Page() {
   }
 
   console.log("elem", elem)
+  type = elem.type;
+  attributes = elem.attributes;
+  children = elem.children; 
+
   return elem;
 }
 
+let component = await Page();
+
 export class App extends MiniReact.Component {
-    render() {
-      console.log("Page", Page());
-      let component = Page();
-      return MiniReact.createElement(Header, null, [
-        MiniReact.createElement(component.type, component.attributes, component.child)
-        
-      ])
-    }
+
+  render() {
+    return MiniReact.createElement("div", null, [
+      MiniReact.createElement(Header, null, []),
+      MiniReact.createElement(type, attributes, children)
+    ])
   }
+}

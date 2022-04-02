@@ -69,3 +69,18 @@ a{
 a:hover{
     cursor: pointer;
 }
+
+.description{
+    display: flex;
+    margin: auto;
+    width: fit-content;
+    padding: 30px;
+}
+
+
+#uploader{
+    display: flex;
+    margin: auto;
+    width: fit-content;
+    padding: 70px;
+}
