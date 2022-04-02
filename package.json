@@ -1,0 +1,20 @@
+{
+  "name": "mini_react_g6",
+  "version": "1.0.0",
+  "description": "```\r npm run start OU php -S localhost:8080 \r ```\r puis se rendre sur la route / pour voir la 1e page",
+  "main": "index.js",
+  "scripts": {
+    "start": "php -S localhost:8080"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sidox-ops/Mini_React_G6.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sidox-ops/Mini_React_G6/issues"
+  },
+  "homepage": "https://github.com/Sidox-ops/Mini_React_G6#readme"
+}
