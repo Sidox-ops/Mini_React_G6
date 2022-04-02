@@ -39,12 +39,7 @@ export default class Meteo extends MiniReact.Component {
     }
 
     return MiniReact.createElement(Hello, { id: "hello" }, [
-      MiniReact.createElement(Header, { class: "header" }, [
-        MiniReact.createElement("button", null, ["bouton"]),
-        MiniReact.createElement("button", null, ["bouton"]),
-        MiniReact.createElement("button", null, ["bouton"]),
-        MiniReact.createElement("button", null, ["bouton"]),
-      ]),
+      // MiniReact.createElement(Header),
       MiniReact.createElement("div", { class: "container" }, [
         MiniReact.createElement("h1", null, ["METEO"]),
         MiniReact.createElement("h2", null, [
