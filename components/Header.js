@@ -11,9 +11,9 @@ export class Header extends MiniReact.Component {
   render() {
     return MiniReact.createElement("div", { class: "header" }, [
       MiniReact.createElement("div", { class: "menu" }, [
-        MiniReact.createElement("a", { class: "button" }, ["bouton"]),
-        MiniReact.createElement("a", { class: "button" }, ["bouton"]),
-        MiniReact.createElement("a", { class: "button" }, ["bouton"]),
+        MiniReact.createElement("a", { class: "button", href:"/" }, ["bouton"]),
+        MiniReact.createElement("a", { class: "button", href:"/meteo" }, ["bouton"]),
+        MiniReact.createElement("a", { class: "button", href:"/uploader" }, ["bouton"]),
         MiniReact.createElement("a", { class: "button" }, ["bouton"])
       ])
 
