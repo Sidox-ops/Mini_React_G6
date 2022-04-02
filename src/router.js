@@ -3,6 +3,8 @@ import Uploader from "./components/Uploader.js";
 import Meteo from "./components/Meteo.js";
 import NotFound404 from "./components/NotFound404.js";
 import Header from "./components/Header.js";
+import ListNames from "./components/Consent.js";
+import Consent from "./components/Consent.js";
 
 String.prototype.interpolate = function (attributes) {
   return this;
@@ -25,9 +27,13 @@ export async function generatePage() {
       const meteo = new Meteo();
       elem = await meteo.render();
       break;
+    case "/consent":
+      const conset = new Consent();
+      elem = conset.render();
+      break;
     default:
       const notFound404 = new NotFound404();
-      elem = await notFound404.render();
+      elem = notFound404.render();
       break;
   }
   if (root.firstChild) {

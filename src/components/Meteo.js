@@ -1,6 +1,5 @@
 import { MiniReact } from "../MiniReact.js";
 import Hello from "./Hello.js";
-import Header from "./Header.js";
 
 const city = "Paris";
 const months = [

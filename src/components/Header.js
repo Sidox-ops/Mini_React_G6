@@ -11,6 +11,9 @@ export default class Header {
         MiniReact.createElement("a", { class: "button", href: "/uploader" }, [
           "UPLOADER",
         ]),
+        MiniReact.createElement("a", { class: "button", href: "/consent" }, [
+          "SONDAGE",
+        ]),
       ]),
     ]);
   }
