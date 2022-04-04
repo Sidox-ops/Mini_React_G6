@@ -75,9 +75,9 @@ export function type_check(variable, conf) {
   return true;
 }
 
-export function prop_access(obj, path) {
+Object.prototype.prop_access = function(path) {
   if ((path === "") || (path === null)) {
-    return obj;
+    return this;
   }
   
   const properties = path.split(".");
@@ -97,5 +97,5 @@ export function prop_access(obj, path) {
     }
     
     return prev[curr];
-  }, obj)
+  }, this)
 }

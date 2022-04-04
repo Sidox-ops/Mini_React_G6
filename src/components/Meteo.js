@@ -1,7 +1,7 @@
 import { MiniReact } from "../MiniReact.js";
 import Hello from "./Hello.js";
 import Header from "./Header.js";
-import { prop_access, type_check } from "../utils.js";
+import { type_check } from "../utils.js";
 
 const city = "Paris";
 const months = [
@@ -33,15 +33,15 @@ export default class Meteo extends MiniReact.Component {
     const meteoJson = await this.getMeteo();
     var date = new Date(meteoJson.dt * 1000);
     var minutes = date.getMinutes() == "0" ? " " : date.getMinutes();
-    var temperature = prop_access(meteoJson, "main.temp");
-    var humidity = prop_access(meteoJson, "main.humidity");
+    var temperature = meteoJson.prop_access("main.temp");
+    var humidity = meteoJson.prop_access("main.humidity");
 
     var weather = meteoJson.weather;
 
     // In the meteo object, check property wind speed is a number
     var windSpeed = "Inconnu";
     if (type_check(meteoJson.wind, { type: 'object', properties: {speed: {type: 'number'}} })) {
-      windSpeed = prop_access(meteoJson, "wind.speed");
+      windSpeed = meteoJson.prop_access("wind.speed")
       windSpeed = `${windSpeed}km/h`;
     }
 
