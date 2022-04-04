@@ -3,6 +3,5 @@
 ## Démarrer le serveur
 
 ```
-php -S localhost:8080 (ou un autre port)
+php -S localhost:8080
 ```
-puis se rendre sur la route /home pour voir la 1e page
