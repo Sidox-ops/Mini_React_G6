@@ -1,7 +1,7 @@
 import { MiniReact } from "../MiniReact.js";
 import Hello from "./Hello.js";
 import Header from "./Header.js";
-import { prop_access } from "../utils.js";
+import { prop_access, type_check } from "../utils.js";
 
 const city = "Paris";
 const months = [
@@ -37,7 +37,14 @@ export default class Meteo extends MiniReact.Component {
     var humidity = prop_access(meteoJson, "main.humidity");
 
     var weather = meteoJson.weather;
-    var windSpeed = prop_access(meteoJson, "wind.speed");
+
+    // In the meteo object, check property wind speed is a number
+    var windSpeed = "Inconnu";
+    if (type_check(meteoJson.wind, { type: 'object', properties: {speed: {type: 'number'}} })) {
+      windSpeed = prop_access(meteoJson, "wind.speed");
+      windSpeed = `${windSpeed}km/h`;
+    }
+
     if (weather[0].description == "couvert") {
       var classIcon = "fas fa-cloud-showers-heavy";
     }
@@ -80,7 +87,7 @@ export default class Meteo extends MiniReact.Component {
             ]),
             MiniReact.createElement("li", null, [
               MiniReact.createElement("p", null, [
-                "Vent (vitesse) : " + windSpeed + "km/h",
+                "Vent (vitesse) : " + windSpeed,
               ]),
             ]),
           ]),
