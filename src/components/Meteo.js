@@ -1,6 +1,7 @@
 import { MiniReact } from "../MiniReact.js";
 import Hello from "./Hello.js";
 import Header from "./Header.js";
+import { prop_access } from "../utils.js";
 
 const city = "Paris";
 const months = [
@@ -32,9 +33,11 @@ export default class Meteo extends MiniReact.Component {
     const meteoJson = await this.getMeteo();
     var date = new Date(meteoJson.dt * 1000);
     var minutes = date.getMinutes() == "0" ? " " : date.getMinutes();
-    var main = meteoJson.main;
+    var temperature = prop_access(meteoJson, "main.temp");
+    var humidity = prop_access(meteoJson, "main.humidity");
+
     var weather = meteoJson.weather;
-    var wind = meteoJson.wind;
+    var windSpeed = prop_access(meteoJson, "wind.speed");
     if (weather[0].description == "couvert") {
       var classIcon = "fas fa-cloud-showers-heavy";
     }
@@ -62,12 +65,12 @@ export default class Meteo extends MiniReact.Component {
           MiniReact.createElement("ul", null, [
             MiniReact.createElement("li", null, [
               MiniReact.createElement("p", null, [
-                "Température : " + main.temp + "°",
+                "Température : " + temperature + "°",
               ]),
             ]),
             MiniReact.createElement("li", null, [
               MiniReact.createElement("p", null, [
-                "Humidité : " + main.humidity + "%",
+                "Humidité : " + humidity + "%",
               ]),
             ]),
             MiniReact.createElement("li", null, [
@@ -77,7 +80,7 @@ export default class Meteo extends MiniReact.Component {
             ]),
             MiniReact.createElement("li", null, [
               MiniReact.createElement("p", null, [
-                "Vent (vitesse) : " + wind.speed + "km/h",
+                "Vent (vitesse) : " + windSpeed + "km/h",
               ]),
             ]),
           ]),

@@ -74,3 +74,28 @@ export function type_check(variable, conf) {
   }
   return true;
 }
+
+export function prop_access(obj, path) {
+  if ((path === "") || (path === null)) {
+    return obj;
+  }
+  
+  const properties = path.split(".");
+  let newPath = "";
+  return properties.reduce((prev, curr) => {
+    
+    newPath += "." + curr;
+    
+    if (prev === null) {
+      console.log("test not exist.");
+      return;
+    }
+    
+    if (!Object.prototype.hasOwnProperty.call(prev,curr)) {
+      newPath = newPath.substring(1);
+      console.log(newPath + " not exist.");
+    }
+    
+    return prev[curr];
+  }, obj)
+}
