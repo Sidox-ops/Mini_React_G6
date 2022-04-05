@@ -3,8 +3,7 @@ import Uploader from "./components/Uploader.js";
 import Meteo from "./components/Meteo.js";
 import NotFound404 from "./components/NotFound404.js";
 import Header from "./components/Header.js";
-import ListNames from "./components/Consent.js";
-import Consent from "./components/Consent.js";
+import CatchThemAll from "./components/CatchThemAll.js";
 
 String.prototype.interpolate = function (attributes) {
   return this;
@@ -16,7 +15,7 @@ export async function generatePage() {
   let elem;
   switch (currentPath) {
     case "/":
-      const home = new Home();
+      const home = new Home({ name: "karl" });
       elem = home.render();
       break;
     case "/uploader":
@@ -27,9 +26,9 @@ export async function generatePage() {
       const meteo = new Meteo();
       elem = await meteo.render();
       break;
-    case "/consent":
-      const conset = new Consent();
-      elem = conset.render();
+    case "/awards":
+      const catchThemAll = new CatchThemAll({ count: 0 });
+      elem = await catchThemAll.render();
       break;
     default:
       const notFound404 = new NotFound404();
