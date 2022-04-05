@@ -1,5 +1,7 @@
 import { MiniReact } from "../MiniReact.js";
 import Hello from "./Hello.js";
+import Header from "./Header.js";
+import { type_check } from "../utils.js";
 
 const city = "Paris";
 const months = [
@@ -31,9 +33,23 @@ export default class Meteo extends MiniReact.Component {
     const meteoJson = await this.getMeteo();
     var date = new Date(meteoJson.dt * 1000);
     var minutes = date.getMinutes() == "0" ? " " : date.getMinutes();
-    var main = meteoJson.main;
+    var temperature = meteoJson.prop_access("main.temp");
+    var humidity = meteoJson.prop_access("main.humidity");
+
     var weather = meteoJson.weather;
-    var wind = meteoJson.wind;
+
+    // In the meteo object, check property wind speed is a number
+    var windSpeed = "Inconnu";
+    if (
+      type_check(meteoJson.wind, {
+        type: "object",
+        properties: { speed: { type: "number" } },
+      })
+    ) {
+      windSpeed = meteoJson.prop_access("wind.speed");
+      windSpeed = `${windSpeed}km/h`;
+    }
+
     if (weather[0].description == "couvert") {
       var classIcon = "fas fa-cloud-showers-heavy";
     }
@@ -61,12 +77,12 @@ export default class Meteo extends MiniReact.Component {
           MiniReact.createElement("ul", null, [
             MiniReact.createElement("li", null, [
               MiniReact.createElement("p", null, [
-                "Température : " + main.temp + "°",
+                "Température : " + temperature + "°",
               ]),
             ]),
             MiniReact.createElement("li", null, [
               MiniReact.createElement("p", null, [
-                "Humidité : " + main.humidity + "%",
+                "Humidité : " + humidity + "%",
               ]),
             ]),
             MiniReact.createElement("li", null, [
@@ -76,7 +92,7 @@ export default class Meteo extends MiniReact.Component {
             ]),
             MiniReact.createElement("li", null, [
               MiniReact.createElement("p", null, [
-                "Vent (vitesse) : " + wind.speed + "km/h",
+                "Vent (vitesse) : " + windSpeed,
               ]),
             ]),
           ]),

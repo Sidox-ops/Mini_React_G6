@@ -1,4 +1,5 @@
 import { generatePage } from "./router.js";
+import './utils.js';
 
 const root = document.querySelector("#root");
 root.addEventListener("rerender", generatePage);

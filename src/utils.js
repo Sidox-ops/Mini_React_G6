@@ -75,22 +75,26 @@ export function type_check(variable, conf) {
   return true;
 }
 
-/* Iterates over an object using a path.
- * If this path exists, it returns it or returns its value
- * If it does not exist an error is thrown */
-export function prop_access(obj, path) {
-  if (typeof path != "string") return obj;
-  if (path === "") return obj;
-  if (typeof obj != "object" || obj === null) {
-    throw new Error(path + "in" + obj + "doesnt exist");
+Object.prototype.prop_access = function (path) {
+  if (path === "" || path === null) {
+    return this;
   }
-  const props = path.split(".");
-  let propriete = obj;
-  props.forEach((prop) => {
-    if (!Object.prototype.hasOwnProperty.call(propriete, prop)) {
-      throw new Error(path + "in" + obj + "doesnt exist");
+
+  const properties = path.split(".");
+  let newPath = "";
+  return properties.reduce((prev, curr) => {
+    newPath += "." + curr;
+
+    if (prev === null) {
+      console.log("test not exist.");
+      return;
     }
-    propriete = propriete[prop];
-  });
-  return propriete;
-}
+
+    if (!Object.prototype.hasOwnProperty.call(prev, curr)) {
+      newPath = newPath.substring(1);
+      console.log(newPath + " not exist.");
+    }
+
+    return prev[curr];
+  }, this);
+};
